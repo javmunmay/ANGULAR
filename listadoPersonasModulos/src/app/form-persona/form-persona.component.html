@@ -1,0 +1,49 @@
+<h1>Nueva Persona</h1>
+<h3>Añadir Nueva Persona:</h3>
+
+<div> <!--(ngSubmit)="enviar(personaForm.value)"-->
+    <form class="form-horizontal" #personaForm="ngForm" >
+        <h3>Añadir Nueva Persona:</h3>
+
+        <div class="mb-3">
+            <label for="text" class="form-control" required [(ngModel)]="persona.id" name="dni" #dni="ngModel"></label>
+
+            <div [hidden]="dni.valid || dni.pristine" class="alert alert-danger">
+                El DNI es obligatorio
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <div class="mb-3">
+            <label for="text" class="form-control" required [(ngModel)]="persona.nombre" name="nombre" #nombre="ngModel"></label>
+
+            <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+                El NOMBRE es obligatorio
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <div class="mb-3">
+            <label for="text" class="form-control" required [(ngModel)]="persona.apellidos" name="apellidos" #apellidos="ngModel"></label>
+
+            <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger">
+                El APELLIDO es obligatorio
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <button type="button">{{textoBoton}}</button>
+        <button type="button" routerLink="/">Cancelar</button>
+
+
+
+
+    
+    </form>
+</div>

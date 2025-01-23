@@ -1,0 +1,19 @@
+p{
+    border: green  solid;
+}
+
+h5{
+    border: blue  solid;
+}
+
+div{
+    border: rgb(187, 255, 0)  solid;
+}
+
+a{
+    background-color: blue;
+    color: white;
+    border-radius: 20px;
+    font-size: 15px;
+    text-decoration: none;
+}

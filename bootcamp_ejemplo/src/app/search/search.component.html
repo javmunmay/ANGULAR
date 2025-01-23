@@ -1,0 +1,13 @@
+<div class="hijo">
+    <h1>Buscador</h1>
+    
+    <form>
+        <input type="text" name="query" [(ngModel)]="query">
+        <button (click)="search()"  class="btn btn-primary">{{labelButton}}</button>
+        <p>Parametro de búsqueda: {{query}}</p>
+        <p>Resultado: {{result}}</p>
+    </form>
+    
+
+</div>
+
