@@ -42,5 +42,8 @@ export class ListadoComponent {
   iraNuevaPersona(){
     this.ruta.navigate(['personas-add', -1])
   }
+
+
+  
 }
 

@@ -44,4 +44,36 @@ export class PAjaxService {
   }
 
 
+  anadir(persona: Persona){
+    let pa  = JSON.parse(JSON.stringify(persona));
+
+    pa.servicio = "insertar";
+
+    return this.http.post<Persona[]>(this.url, JSON.stringify(pa));
+  }
+
+
+  selPersonaID(id: number) {
+    let cuerpo = {
+      servicio: "selPersonaID",
+      id: id
+    };
+    console.log("Persona seleccionada con ID:", id);
+    return this.http.post<Persona>(this.url, cuerpo);
+  }
+
+
+
+  editarServicio(id: number, persona: Persona) {
+    const cuerpo = {
+      servicio: "modificar",
+      id: id,
+      dni: persona.dni,
+      nombre: persona.nombre,
+      apellidos: persona.apellidos
+    };
+    return this.http.post<Persona>(this.url, cuerpo);
+  }
+
+
 }

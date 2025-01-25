@@ -1,35 +1,40 @@
 
-<a class="btn btn-primary" routerLink="/personas-add/-1" role="button">Añadir Persona (a)</a>
-<button type="button" class="btn btn-primary" (click)="iraNuevaPersona()">Añadir Persona (p)</button>
+<div class="container-fluid">
+
+  <a class="btn btn-primary" routerLink="/personas-add/-1" role="button">Añadir Persona (a)</a>
+
+  <span> | </span>
+
+  <button type="button" class="btn btn-primary" (click)="iraNuevaPersona()">Añadir Persona (p)</button>
 
 
-<p>La lista de Personas esta en Console!</p>
+  <p>La lista de Personas esta en Console!</p>
 
-<div class="table table-bordered">
-    <table>
-      <thead>
-        <tr class="table-primary">
-          <th>ID</th>
-          <th>DNI</th>
-          <th>Nombre</th>
-          <th>Apellidos</th>
-          <th>Sexo</th>
-          <th>Acciones</th>
-        </tr>
-
-      </thead>
-      <tbody>
-        <tr *ngFor="let personas of listaPer">
-          <td>{{ personas.id }}</td>
-          <td>{{ personas.dni }}</td>
-          <td>{{ personas.nombre}}</td>
-          <td>{{ personas.apellidos }}</td>
-          <td>{{ personas.sexo }}</td>
-          <td>
-            <button>Editar</button>
-            <button (click)="eliminarPersona(personas.id)">Eliminar</button> 
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="table table-bordered">
+      <table>
+        <thead>
+          <tr class="table-primary">
+            <th>ID</th>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Acciones</th>
+          </tr>
+  
+        </thead>
+        <tbody>
+          <tr *ngFor="let personas of listaPer">
+            <td>{{ personas.id }}</td>
+            <td>{{ personas.dni }}</td>
+            <td>{{ personas.nombre}}</td>
+            <td>{{ personas.apellidos }}</td>
+            <td>
+              <button class="btn btn-warning" routerLink="/personas-add/{{personas.id}}">Editar</button>
+              <span> | </span>
+              <button class="btn btn-danger" (click)="eliminarPersona(personas.id)">Eliminar</button> 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

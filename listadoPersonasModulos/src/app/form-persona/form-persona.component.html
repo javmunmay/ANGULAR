@@ -1,49 +1,37 @@
-<h1>Nueva Persona</h1>
-<h3>Añadir Nueva Persona:</h3>
+<h1>Nueva persona</h1>
+<h3>Añadir nueva persona</h3>
 
-<div> <!--(ngSubmit)="enviar(personaForm.value)"-->
-    <form class="form-horizontal" #personaForm="ngForm" >
-        <h3>Añadir Nueva Persona:</h3>
-
-        <div class="mb-3">
-            <label for="text" class="form-control" required [(ngModel)]="persona.id" name="dni" #dni="ngModel"></label>
-
-            <div [hidden]="dni.valid || dni.pristine" class="alert alert-danger">
-                El DNI es obligatorio
-            </div>
-
-        </div>
+<div class="container-fluid" id="formNvPers">
+    <form #personaForm="ngForm" (ngSubmit)="onSubmit(personaForm.value)">
+        <label for="dni">DNI: </label>
+        <br>
+        <input type="text" name="dni" id="dni" required [(ngModel)]="persona.dni" #dni="ngModel">
+        <!--<div [hidden]="dni.valid || dni.pristine" >
+            El DNI es obligatorio
+        </div>-->
 
         <br><br>
 
-        <div class="mb-3">
-            <label for="text" class="form-control" required [(ngModel)]="persona.nombre" name="nombre" #nombre="ngModel"></label>
-
-            <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
-                El NOMBRE es obligatorio
-            </div>
-
-        </div>
+        <label for="nombre">Nombre: </label>
+        <br>
+        <input type="text" name="nombre" id="nombre" required [(ngModel)]="persona.nombre" #nombre="ngModel">
+        <!--<div [hidden]="nombre.valid || nombre.pristine" >
+            El NOMBRE es obligatorio
+        </div>-->
 
         <br><br>
 
-        <div class="mb-3">
-            <label for="text" class="form-control" required [(ngModel)]="persona.apellidos" name="apellidos" #apellidos="ngModel"></label>
-
-            <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger">
-                El APELLIDO es obligatorio
-            </div>
-
-        </div>
+        <label for="apellidos">Apellidos: </label>
+        <br>
+        <input type="text" name="apellidos" id="apellidos" required [(ngModel)]="persona.apellidos" #apellidos="ngModel">
+        <!--<div [hidden]="apellidos.valid || apellidos.pristine" >
+            El APELLIDO es obligatorio
+        </div>-->
 
         <br><br>
 
-        <button type="button">{{textoBoton}}</button>
-        <button type="button" routerLink="/">Cancelar</button>
-
-
-
-
-    
+        <button class="btn btn-success" type="button" type="submit" [disabled]="!personaForm.valid">{{textoBoton}}</button>
+        <span> | </span>
+        <button class="btn btn-danger" type="button" routerLink="/">Cancelar</button>
     </form>
 </div>
