@@ -1,0 +1,35 @@
+<h3>Información Factura seleccionada:</h3>
+
+<h2>Detalle de la Factura {{ numeroFactura }}</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>CANTIDAD</th>
+            <th>CONCEPTO</th>
+            <th>PRECIO</th>
+            <th>IVA</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr *ngFor="let detalle of detallesFactura">
+            <td>{{ detalle.id }}</td>
+            <td>{{ detalle.cantidad }}</td>
+            <td>{{ detalle.concepto }}</td>
+            <td>{{ detalle.precio | currency:'EUR' }}</td>
+            <td>{{ detalle.iva | currency:'EUR' }}</td>
+            <td>{{ detalle.total | currency:'EUR' }}</td>
+        </tr>
+        <!-- Fila de totales -->
+        <tr class="totales">
+            <td colspan="4"><strong>Totales</strong></td>
+            <td><strong>{{ totalIVA | currency:'EUR' }}</strong></td>
+            <td><strong>{{ totalGeneral | currency:'EUR' }}</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<button routerLink="/" class="btn-volver">Volver</button>

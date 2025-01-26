@@ -1,0 +1,178 @@
+Primer examen de la segunda evaluación
+Dado el archivo comprimidos y, a partir del enunciado del examen suministrado por el profesor. Añadir el código JavaScript necesario para la resolución de las preguntas de dicho enunciado.
+
+Descargar el archivo comprimido, descomprimirlo y, junto con el enunciado del examen, prestar atención a la explicación del profesor.
+
+
+
+1. Crear un componente llamado principal, el cual se mostrará al principio. 
+
+	Este componente contendrá una tabla la cual se llenará al inicio. 
+
+	Con la siguiente información (1,5 puntos):
+
+
+
+
+
+	Lo hace: 1,5
+
+
+
+
+
+
+
+
+
+2. Cuando el usuario haga click en un número de factura (es un enlace) entonces 
+
+	se navegará a otro componente donde se obtendrán las líneas de detalle 
+
+	para dicha factura, al cual se le pasarán 2 parámetros, el id y 
+
+	el número (de la factura).  (0,5 puntos).
+
+
+
+
+
+	Lo hace: 0,5
+
+
+
+
+
+
+
+
+
+
+
+3. Crear un nuevo componente llamado listaDetalle y Ubicarlo dentro del componente
+
+	 principal (creado en el punto anterior). Este componente recibirá 
+
+	como parámetro el detalle de la factura seleccionada en el componente anterior. 
+
+	Este componente se compondrá de una tabla  con las filas y los campos 
+
+	correspondientes pero SIN incluir las columnas IVA y TOTAL, es decir, 
+
+	con las columnas: ID, CANTIDAD, CONCEPTO y PRECIO 
+
+	con los datos de las líneas de detalle de la factura seleccionada por 
+
+	el usuario (2 puntos).
+
+
+
+
+
+	NO Lo hace: 0
+
+
+
+
+
+
+
+
+
+4. Una vez hecho el ejercicio anterior, calcular y pintar el contenido de las 
+
+	columnas IVA y TOTAL correspondiente a las líneas de detalle de la factura 
+
+	seleccionada por el usuario (1 punto).
+
+
+
+
+
+	NO Lo hace: 0
+
+
+
+
+
+
+
+
+
+
+
+5. Una vez hecho el ejercicio anterior, calcular y pintar la fila final de la tabla (TOTALES)
+
+	(1 punto)
+
+
+
+
+
+	No lo hace: 0
+
+
+
+
+
+
+
+
+
+
+
+6. Añadir un botón con la etiqueta:"Nuevo detalle", el cual al hacer click muestre un 
+
+	div/form con los campos cantidad, concepto, precio y tipo IVA que no 
+
+	se estaban mostrando. Se utilizará para ello la directiva *ngIf 
+
+	(si, obligatoriamente). (2 puntos).
+
+
+
+
+
+	NO lo hace: 0
+
+
+
+
+
+
+
+
+
+7. Añadir una nueva columna al final de la tabla (en el componente listaDetalle) 
+
+	la cual se titule: Borrar (1 punto).
+
+
+
+
+
+	NO Si lo hace: 0
+
+
+
+
+
+
+
+
+
+8. DAñadir una nueva columna justo antes de la columna Borrar (y después de Total) 
+
+	la cual se titutle: Editar.  El contenido de cada fila en dicha columna 
+
+	será un botón, con la funcionalidad de, al hacer click, 
+
+	copiar la información de esa línea de detalle en el bloque mostrado en el punto 6, 
+
+	y mostrarlo (2 puntos).
+
+	NO lo hace: 0
+
+
+
+	NOTA: 2 / 2 => 1
