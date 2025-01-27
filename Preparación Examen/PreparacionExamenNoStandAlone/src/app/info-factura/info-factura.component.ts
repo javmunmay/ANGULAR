@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacturaService } from '../servicio/factura.service';
-import { Factura } from '../modelos/factura';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -20,13 +20,15 @@ export class InfoFacturaComponent implements OnInit {
   numeroFactura!: string;
   totalIVA: number = 0;
   totalGeneral: number = 0;
+  mostrarFormulario: boolean = false;
+  
 
   constructor(
     private route: ActivatedRoute,
     private facturaService: FacturaService,
     private peticion: FacturaService
   )
-  {}
+  { }
 
   
 
@@ -57,6 +59,12 @@ export class InfoFacturaComponent implements OnInit {
     })
 
   }
+
+  alternarFormulario() {
+    this.mostrarFormulario = !this.mostrarFormulario;
+  }
+
+  
 
   calcularIVA(precio: number, tipoIVA:number):number{
     return precio*(tipoIVA / 100);

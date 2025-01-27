@@ -1,6 +1,39 @@
 <h3>Información Factura seleccionada:</h3>
 
 <h2>Detalle de la Factura {{ numeroFactura }}</h2>
+
+
+
+
+<button (click)="alternarFormulario()" class="btn-nuevo-detalle">
+    {{ mostrarFormulario ? 'Ocultar formulario' : 'Nuevo detalle' }}
+</button>
+
+  <!--
+  <div *ngIf="mostrarFormulario" class="formulario-detalle">
+    <form [formGroup]="formularioDetalle">
+      <label for="cantidad">Cantidad:</label>
+      <input id="cantidad" formControlName="cantidad" type="number" min="1" required>
+
+      <label for="concepto">Concepto:</label>
+      <input id="concepto" formControlName="concepto" type="text" required>
+
+      <label for="precio">Precio:</label>
+      <input id="precio" formControlName="precio" type="number" min="0" required>
+
+      <label for="tipo_iva">Tipo IVA (%):</label>
+      <input id="tipo_iva" formControlName="tipo_iva" type="number" min="0" required>
+
+      <button (click)="añadirLineaDetalle()" [disabled]="formularioDetalle.invalid">
+        Añadir línea de detalle
+      </button>
+    </form>
+  </div>
+
+-->
+
+
+
 <table>
     <thead>
         <tr>
