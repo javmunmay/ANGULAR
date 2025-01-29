@@ -7,7 +7,7 @@ import { ListadoComponent } from './componentes/listado/listado.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { FormPersonaComponent } from './form-persona/form-persona.component';
+import { FormPersonaComponent } from './componentes/form-persona/form-persona.component';
 
 
 @NgModule({
