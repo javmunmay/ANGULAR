@@ -1,0 +1,43 @@
+<p>principal works!</p>
+
+
+<div class="container-fluid">
+
+<a class="btn btn-primary" routerLink="/personas-add/-1" role="button">Añadir Factura (a)</a>
+
+  <span> | </span>
+
+  <button type="button" class="btn btn-primary">Añadir Factura (p)</button>
+
+  <!--(click)="iraNuevaPersona()"-->
+
+
+    
+    <p>La lista de Facturas esta en Console!</p>
+  
+    <div class="table table-bordered">
+        <table>
+          <thead>
+            <tr class="table-primary">
+              <th>ID</th>
+              <th>Numero</th>
+              <th>Cliente</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let factura of listaFactura">
+              <td>{{ factura.id }}</td>
+              <td><a [routerLink]="['/facturaInfo-add/', factura.id, factura.numero]">{{ factura.numero }}</a></td>
+              <td>{{ factura.id_cliente}}</td>
+              <td>{{ factura.fecha | date:'MMM d, y' }}</td>
+              <td>
+                <button class="btn btn-warning" routerLink="/facturaEdit-add/{{factura.id}}">Editar</button>
+                <span> | </span>
+                <button class="btn btn-danger" >Eliminar</button> <!--(click)="eliminarPersona(personas.id)"-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>

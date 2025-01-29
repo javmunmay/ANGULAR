@@ -1,0 +1,80 @@
+<h3>Información Factura seleccionada:</h3>
+
+<h2>Detalle de la Factura {{ numeroFactura }}</h2>
+
+<!-- 0 añadir 1 modificar-->
+<button (click)="abrirCerrarFormulario(0,detalleFactura)">
+    Nuevo Detalle
+</button>
+
+<br><br>
+
+<div *ngIf="mostrarFormulario" id="formDetalle">
+    <form #formDetalle="ngForm" (ngSubmit)="onSubmit(formDetalle.value)">
+      
+      <label for="cantidad">CANTIDAD </label>
+      <input type="number" id="cantidad" name="cantidad" [(ngModel)]="detalleFactura.cantidad" required>
+      <br><br> <!-- Usa el concept dentro de name para sarle al valor en este caso detalleFactura -->
+  
+      <label for="concepto">CONCEPTO </label>
+      <input type="text" id="concepto" name="concepto" [(ngModel)]="detalleFactura.concepto" required>
+      <br><br>
+  
+      <label for="precio">PRECIO </label>
+      <input type="number" id="precio" name="precio" [(ngModel)]="detalleFactura.precio" required>
+      <br><br>
+  
+      <label for="tipo_iva">IVA </label>
+      <input type="number" id="tipo_iva" name="tipo_iva" [(ngModel)]="detalleFactura.tipo_iva" required>
+      <br><br>
+  
+      <input type="hidden" id="id" name="id" [(ngModel)]="detalleFactura.id">
+      <button type="submit" [disabled]="!formDetalle.valid">{{textoBoton}}</button>
+      
+    </form>
+</div>
+  
+<br><br>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>CANTIDAD</th>
+            <th>CONCEPTO</th>
+            <th>PRECIO</th>
+            <th>IVA</th>
+            <th>TOTAL</th>
+            <th>EDITAR</th>
+            <th>BORRAR</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let detalle of detallesFactura">
+            <td>{{ detalle.id }}</td>
+            <td>{{ detalle.cantidad }}</td>
+            <td>{{ detalle.concepto }}</td>
+            <td>{{ detalle.precio }}</td>
+            <td>{{ detalle.iva }}</td>
+            <td>{{ detalle.total }}</td>
+            <td>
+                <button class="btn btn-danger" (click)="abrirCerrarFormulario(1, detalle)">Editar</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="eliminarDetalle(detalle.id, detalle.id_factura)">Eliminar</button>
+            </td>
+        </tr>
+
+        <!-- Fila de totales -->
+        <tr class="totales">
+            <td colspan="4"><strong>Totales</strong></td>
+            <td><strong>{{ totalIVA }}</strong></td>
+            <td><strong>{{ totalGeneral }}</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<button routerLink="/">Volver</button>
