@@ -1,0 +1,27 @@
+<div class="container-fluid">
+
+
+    <p>La lista de Facturas esta en Console!</p>
+
+    <div class="table table-bordered">
+        <table border="1">
+            <thead>
+                <tr class="table-primary">
+                    <th>ID</th>
+                    <th>Numero</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let factura of listaFactura">
+                    <td>{{ factura.id }}</td>
+                    <td><a [routerLink]="['/facturaInfo-add/', factura.id, factura.numero]">{{ factura.numero }}</a>
+                    </td>
+                    <td>{{ factura.id_cliente}}</td>
+                    <td>{{ factura.fecha}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
