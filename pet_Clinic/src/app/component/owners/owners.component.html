@@ -1,0 +1,34 @@
+<p>owners works!</p>
+
+<button type="button" class="btn btn-primary" (click)="iraNuevoOwner()">Añadir Persona (p)</button>
+  
+<h2>Lista de Propietarios</h2>
+<div class="table table-bordered">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Dirección</th>
+        <th>Ciudad</th>
+        <th>Teléfono</th>
+        <th>Mascotas</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (propietarios of propietario; track $index){
+            <tr>
+                <td>{{ propietarios.id }}</td>
+                <td>{{ propietarios.firstName }}</td>
+                <td>{{ propietarios.lastName }}</td>
+                <td>{{ propietarios.address }}</td>
+                <td>{{ propietarios.city }}</td>
+                <td>{{ propietarios.telephone }}</td>
+                <td>{{ propietarios.pets }}</td>
+              </tr>
+        }
+        
+    </tbody>
+  </table>
+</div>
