@@ -28,7 +28,7 @@ export class FacturaService {
       servicio: "detalle",
       id: id
     });
-    return this.http.post<DetalleFactura[]>(this.url, cuerpo);
+    return this.http.post<Factura[]>(this.url, cuerpo);
     //Persona[] al poner esto te va a dar un array de personas y 
     //si no lo pongo esta mal y no me va a dar un array
   }
@@ -42,26 +42,13 @@ export class FacturaService {
     return this.http.post<DetalleFactura[]>(this.url, cuerpo);
   }
 
-  
-  eliminarDetalleFactura(id: number, id_factura:number) {
-    let cuerpo = {
-      servicio: "borra",
-      id: id,
-      id_factura: id_factura
-    };
-    console.log("Detalle eliminado con ID:", id);
-    return this.http.post<DetalleFactura[]>(this.url, cuerpo);
-  }
-
-
-  editarDetalle(detalle: DetalleFactura, id_factura: number) {
-    detalle["id_factura"] = id_factura;
-
-    const cuerpo = {
-      servicio: "modifica",
-      detalle: detalle
-      
-    };
-    return this.http.post<DetalleFactura[]>(this.url, cuerpo);
+  cargarDetallesFactura(id: number) {
+    let cuerpo = JSON.stringify({
+      servicio: "detalle",
+      id: id
+    });
+    return this.http.post<Factura[]>(this.url, cuerpo);
+    //Persona[] al poner esto te va a dar un array de personas y 
+    //si no lo pongo esta mal y no me va a dar un array
   }
 }

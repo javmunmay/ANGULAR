@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
-import { FacturaService } from '../servicio/factura.service';
-import { Factura } from '../modelos/factura';
+import { FacturaService } from '../../servicio/factura.service';
+import { Factura } from '../../modelos/factura';
 import { Router } from '@angular/router';
 
 @Component({
