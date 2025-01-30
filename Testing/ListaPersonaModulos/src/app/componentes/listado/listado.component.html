@@ -1,0 +1,34 @@
+<p>
+    <!--Navegar a traves de routerLink-->
+
+  <a class="btn btn-primary" routerLink="/personas-add/-1" role="button">Añadir persona</a>
+  <span> | </span>
+  <!--Navegar programaticamente-->
+  <button type="button" class="btn btn-primary" (click)="irNuevaPersona()">Añadir persona</button>
+
+</p>
+
+<table class="table table-bordered">
+    <thead>
+      <tr class="table-primary">
+        <th>ID</th>
+        <th>DNI</th>
+        <th>NOMBRE</th>
+        <th>APELLIDO</th>
+        <th>ACCION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of listaPer">
+        <td>{{ p.ID }}</td>
+        <td>{{ p.DNI }}</td>
+        <td>{{ p.NOMBRE }}</td>
+        <td>{{ p.APELLIDOS }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="borrarPersona(p.NOMBRE, p.ID)">Borrar</button>
+          <a class="btn btn-primary" routerLink="/personas-add/{{p.ID}}" role="button">Modificar</a>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -9,21 +9,23 @@ import { DetalleFactura } from '../../modelos/detalle-factura';
 @Component({
   selector: 'app-lista-detalle',
   standalone: false,
-  
+
   templateUrl: './lista-detalle.component.html',
   styleUrl: './lista-detalle.component.css'
 })
 export class ListaDetalleComponent {
 
-  detallesFactura: any[] = [];
-  idFactura: number =0;
+  detallesFactura: DetalleFactura[] = [];
+  idFactura: number = 0;
   numeroFactura: string = "";
   totalIVA: number = 0;
   totalGeneral: number = 0;
   mostrarFormulario: boolean = false;
-  
+  textoBoton!: string;
+  detalleFactura: DetalleFactura = <DetalleFactura>{}
+  //defino un objeto de tipo detalle factura
 
-  detalle = { 
+  detalle = {
     cantidad: 1,
     concepto: '',
     precio: 0,
@@ -32,83 +34,180 @@ export class ListaDetalleComponent {
 
 
 
+
+
   constructor(
     private route: ActivatedRoute,
     private facturaService: FacturaService,
     private peticion: FacturaService,
     private ruta: Router
-  )
-  { }
+  ) {
 
-  
+    this.detalleFactura = {
+      id: 0,
+      id_factura: 0,
+      cantidad: 0,
+      concepto: "",
+      precio: 0,
+      tipo_iva: 0,
+      iva: 0,
+      total: 0
+    }
+  }
+
+
 
   ngOnInit() {
     const params = this.route.snapshot.params;
-    
+
     this.idFactura = Number(params['id']);
     this.numeroFactura = params['numero'];
 
-    console.log("IdFactura Capturada: "+this.idFactura);
+    console.log("IdFactura Capturada: " + this.idFactura);
 
     this.facturaService.detalleFactura(this.idFactura).subscribe(datos => {
       console.log("Datos de la factura: ", datos);
-      
-      this.detallesFactura = datos.map(detalle => {
-        const iva = this.calcularIVA(detalle.precio , detalle.tipo_iva);
+
+      this.detallesFactura = datos.map((detalle: DetalleFactura) => { // Especificar el tipo
+        const iva = this.calcularIVA(detalle.precio, detalle.tipo_iva);
         const total = this.calcularTotal(detalle.precio, detalle.tipo_iva);
-        
-        //Sumar todos los totales
+
         this.totalIVA += iva;
         this.totalGeneral += total;
-        
-        return{
+
+        return {
           ...detalle,
           iva: iva,
           total: total
         };
       });
-    })
+    });
 
   }
 
 
-  calcularIVA(precio: number, tipoIVA:number):number{
-    return parseFloat((precio*(tipoIVA / 100)).toFixed(2));
+  calcularIVA(precio: number, tipoIVA: number): number {
+    return parseFloat((precio * (tipoIVA / 100)).toFixed(2));
   }
 
-  
-  calcularTotal(precio: number, tipoIVA:number):number{
+
+  calcularTotal(precio: number, tipoIVA: number): number {
     return parseFloat((precio + this.calcularIVA(precio, tipoIVA)).toFixed(2));
   }
 
 
-  anadirDetalleFactura(){
+  private actualizarTotales() {
+    this.totalIVA = this.detallesFactura.reduce((sum, d) => sum + d.iva, 0);
+    this.totalGeneral = this.detallesFactura.reduce((sum, d) => sum + d.total, 0);
+  }
+
+  anadirDetalleFactura() {
 
   }
 
-  abrirCerrarFormulario(){
-    this.mostrarFormulario = !this.mostrarFormulario;
+  abrirCerrarFormulario(valor: number, detalle: DetalleFactura) {
+
+    if (valor == 0) {
+      this.textoBoton = "Añadir línea de detalle"
+      this.mostrarFormulario = !this.mostrarFormulario;
+      this.detalleFactura = {
+        id: 0,
+        id_factura: 0,
+        cantidad: 0,
+        concepto: "",
+        precio: 0,
+        tipo_iva: 0,
+        iva: 0,
+        total: 0
+      }
+
+    } else if (valor == 1) {
+      this.textoBoton = "Modificar línea de detalle"
+      if (this.mostrarFormulario == false) {
+        this.mostrarFormulario = !this.mostrarFormulario; //true
+      }
+
+      this.detalleFactura = detalle
+
+
+    }
+
+
   }
 
 
   onSubmit(form: DetalleFactura) {
-       
+
     console.log("form: ", form);
     console.log("this.detallesFactura: ", this.detallesFactura);
     console.log(" Factura: ", this.detallesFactura, " en proceso de ser añadida o modificada. ");
+    console.log("form.id: " + form);
 
-    form.id = this.idFactura;
-    console.log("form.id: "+ form);
+    form["id_factura"] = this.idFactura;
+    //al no traer del form el id factura hay que ponerlo
+
+    if (form.id == 0) {
+      this.peticion.anadirDetalleFactura(form).subscribe(data => {
+        console.log("DATA. " + data);
+        console.log('Factura actualizada:', data);
+        this.detallesFactura = data.map((detalle: DetalleFactura) => {
+          return {
+            ...detalle,
+            iva: this.calcularIVA(detalle.precio, detalle.tipo_iva),
+            total: this.calcularTotal(detalle.precio, detalle.tipo_iva)
+          };
+        });
+        this.actualizarTotales();
+      });
+    }else{
+
+      this.peticion.editarDetalle(this.detalleFactura, this.idFactura).subscribe({
+        next: res => {
+          this.detallesFactura = res.map((detalle: DetalleFactura) => {
+            return {
+              ...detalle,
+              iva: this.calcularIVA(detalle.precio, detalle.tipo_iva),
+              total: this.calcularTotal(detalle.precio, detalle.tipo_iva)
+            };
+          });
+          this.actualizarTotales();
+          this.abrirCerrarFormulario(0,this.detalleFactura);
+        },
+        error: err => console.error('Error al modificar detalle', err)
+      });
+    }
+
+
     
 
-    this.peticion.anadirDetalleFactura(form).subscribe(data =>{
-      
-        console.log('Factura actualizada:', data);
-        this.detallesFactura = data;
-      
-    });
-
   }
+
+  eliminarDetalle(id: number, id_factura: number) {
+    if (confirm('¿Estás seguro de eliminar este Detalle?')) {
+      this.peticion.eliminarDetalleFactura(id, id_factura).subscribe({
+        next: res => {
+          console.log('Detalle eliminado:', res);
+          this.detallesFactura = res.map((detalle: DetalleFactura) => {
+            return {
+              ...detalle,
+              iva: this.calcularIVA(detalle.precio, detalle.tipo_iva),
+              total: this.calcularTotal(detalle.precio, detalle.tipo_iva)
+            };
+          });
+          this.actualizarTotales();
+          console.log("this.detallesFactura: " + this.detallesFactura);
+
+
+        },
+        error: err => console.error('Error al eliminar detalle:', err)
+      });
+    }
+  }
+
+
+
+
+
 
 }
 

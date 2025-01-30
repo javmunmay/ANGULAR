@@ -14,11 +14,6 @@ const routes: Routes = [
     path:"facturaInfo-add/:id/:numero",
     component: ListaDetalleComponent
   
-  },
-  {
-    path:"facturaEdit-add/:id",
-    component: ListaDetalleComponent
-  
   }];
   
 

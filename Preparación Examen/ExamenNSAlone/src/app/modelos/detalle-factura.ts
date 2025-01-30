@@ -1,6 +1,6 @@
 export interface DetalleFactura {
     id:number,
-    idFactura:number,
+    id_factura:number,
     cantidad:number,
     concepto:string,
     precio:number,
