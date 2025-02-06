@@ -15,9 +15,9 @@ export class OwnerService {
   //Casa: 
   //Clase: http://localhost/curso/ANGULAR/PetClinic/servicios.php
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getOwners(){
+  getOwners() {
     let cuerpo = {
       accion: "ListarOwners"
     };
@@ -31,4 +31,20 @@ export class OwnerService {
     };
     return this.http.post(this.url, cuerpo);
   }*/
+
+
+
+  editarServicio(id: number, persona: Owner) {
+    const cuerpo = {
+      servicio: "modificaOwner",
+      id: id,
+      first_name: persona.first_name,
+      last_name: persona.last_name,
+      address: persona.address,
+      city: persona.city,
+      telephone: persona.telephone,
+    };
+    return this.http.post<Owner>(this.url, cuerpo);
+  }
+
 }

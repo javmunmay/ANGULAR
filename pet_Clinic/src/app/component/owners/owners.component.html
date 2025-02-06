@@ -20,7 +20,7 @@
         @for (propietarios of propietario; track $index){
             <tr>
                 <td>{{ propietarios.id }}</td>
-                <td>{{ propietarios.firstName }}</td>
+                <a [routerLink]="['/personas-add/', propietarios.id]"><td>{{ propietarios.firstName }}</td></a>
                 <td>{{ propietarios.lastName }}</td>
                 <td>{{ propietarios.address }}</td>
                 <td>{{ propietarios.city }}</td>

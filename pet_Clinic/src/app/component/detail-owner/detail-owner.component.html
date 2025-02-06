@@ -1,1 +1,64 @@
-<p>detail-owner works!</p>
+
+
+<div class="container-fluid">
+    <h1>Propietario</h1>
+
+    <p>La lista de Facturas esta en Console!</p>
+
+    <div class="table table-bordered">
+        <table border="1">
+            <thead >
+                <tr class="table-primary">
+                    <th>ID</th>
+                </tr>
+                <td *ngFor="let propietario of propietarios">
+                    {{ propietario.id }}
+                </td>
+
+
+                <tr class="table-primary">
+                    <th>Nombre</th>
+                </tr>
+                <td *ngFor="let propietario of propietarios">
+                    {{ propietario.first_name }}
+                </td>
+
+
+                <tr class="table-primary">
+                    <th>Apellidos</th>
+                </tr>
+                <td *ngFor="let propietario of propietarios">
+                    {{ propietario.last_name }}
+                </td>
+
+
+                <tr class="table-primary">
+                    <th>Direccion</th>
+                </tr>
+                <td *ngFor="let propietario of propietarios">
+                    {{ propietario.address}}
+                </td>
+
+                
+                <tr class="table-primary">
+                    <th>Direccion</th>
+                </tr>
+                <td *ngFor="let propietario of propietarios">
+                    {{ propietario.address}}
+                </td>
+
+
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let factura of listaFactura">
+                    <td>{{ factura.id }}</td>
+                    
+                    
+                    <td>{{ factura.id_cliente}}</td>
+                    <td>{{ factura.fecha}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
