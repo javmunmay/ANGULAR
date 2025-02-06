@@ -30,8 +30,8 @@ export class FormOwnerComponent {
     
     this.owner = {
       id: -1,
-      first_name: "",
-      last_name: "",
+      firstName: "",
+      lastName: "",
       address: "",
       city: "",
       telephone: "",

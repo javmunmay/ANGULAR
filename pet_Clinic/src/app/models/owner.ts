@@ -2,8 +2,8 @@ import { Pet } from "./pet";
 
 export interface Owner {
     id:number,
-    first_name: string,
-    last_name:string,
+    firstName: string,
+    lastName:string,
     address:string,
     city:string,
     telephone:string,

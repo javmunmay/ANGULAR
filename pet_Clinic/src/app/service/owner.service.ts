@@ -24,6 +24,15 @@ export class OwnerService {
     return this.http.post<Owner[]>(this.url, cuerpo);
   }
 
+
+  ObtenerOwnerId(id:number) {
+    let cuerpo = JSON.stringify({
+      accion: "ObtenerOwnerId",
+      id:id
+    });
+    return this.http.post<Owner>(this.url, cuerpo);
+  }
+
   /*
   getPersonas() {
     let cuerpo = {
@@ -38,8 +47,8 @@ export class OwnerService {
     const cuerpo = {
       servicio: "modificaOwner",
       id: id,
-      first_name: persona.first_name,
-      last_name: persona.last_name,
+      firstName: persona.firstName,
+      lastName: persona.lastName,
       address: persona.address,
       city: persona.city,
       telephone: persona.telephone,

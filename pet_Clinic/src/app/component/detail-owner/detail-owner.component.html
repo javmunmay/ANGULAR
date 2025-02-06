@@ -3,62 +3,45 @@
 <div class="container-fluid">
     <h1>Propietario</h1>
 
-    <p>La lista de Facturas esta en Console!</p>
+    <p>La lista de owner esta en Console!</p>
 
     <div class="table table-bordered">
         <table border="1">
-            <thead >
+            
                 <tr class="table-primary">
                     <th>ID</th>
+                    <td>{{ owner.id }}</td>
                 </tr>
-                <td *ngFor="let propietario of propietarios">
-                    {{ propietario.id }}
-                </td>
-
 
                 <tr class="table-primary">
                     <th>Nombre</th>
+                    <td>{{ owner.firstName }}</td>
                 </tr>
-                <td *ngFor="let propietario of propietarios">
-                    {{ propietario.first_name }}
-                </td>
-
 
                 <tr class="table-primary">
                     <th>Apellidos</th>
+                    <td>{{ owner.lastName }}</td>
                 </tr>
-                <td *ngFor="let propietario of propietarios">
-                    {{ propietario.last_name }}
-                </td>
-
 
                 <tr class="table-primary">
                     <th>Direccion</th>
+                    <td>{{ owner.address}}</td>
                 </tr>
-                <td *ngFor="let propietario of propietarios">
-                    {{ propietario.address}}
-                </td>
 
-                
                 <tr class="table-primary">
-                    <th>Direccion</th>
+                    <th>Ciudad</th>
+                    <td>{{ owner.city}}</td>
                 </tr>
-                <td *ngFor="let propietario of propietarios">
-                    {{ propietario.address}}
-                </td>
 
 
-
-            </thead>
-            <tbody>
-                <tr *ngFor="let factura of listaFactura">
-                    <td>{{ factura.id }}</td>
-                    
-                    
-                    <td>{{ factura.id_cliente}}</td>
-                    <td>{{ factura.fecha}}</td>
+                <tr class="table-primary">
+                    <th>Telefono</th>
+                    <td>{{ owner.telephone}}</td>
                 </tr>
-            </tbody>
+
+
+            
+            
         </table>
     </div>
 </div>

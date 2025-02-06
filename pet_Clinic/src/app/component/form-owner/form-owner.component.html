@@ -5,19 +5,19 @@
 
 <div class="container-fluid" id="formNvPers">
     <form #personaForm="ngForm" (ngSubmit)="onSubmit(personaForm.value)">
-        <label for="first_name">Nombre </label>
+        <label for="firstName">Nombre </label>
         <br>
-        <input type="text" name="first_name" id="first_name" required [(ngModel)]="owner.first_name" #first_name="ngModel">
-        <div [hidden]="first_name.valid || first_name.pristine" >
+        <input type="text" name="firstName" id="firstName" required [(ngModel)]="owner.firstName" #firstName="ngModel">
+        <div [hidden]="firstName.valid || firstName.pristine" >
             El Nombre es obligatorio
         </div>
 
         <br><br>
 
-        <label for="last_name">Apellido: </label>
+        <label for="lastName">Apellido: </label>
         <br>
-        <input type="text" name="last_name" id="last_name" required [(ngModel)]="owner.last_name" #last_name="ngModel">
-        <div [hidden]="last_name.valid || last_name.pristine" >
+        <input type="text" name="lastName" id="lastName" required [(ngModel)]="owner.lastName" #lastName="ngModel">
+        <div [hidden]="lastName.valid || lastName.pristine" >
             El Apellido es obligatorio
         </div>
 
