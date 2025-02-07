@@ -22,6 +22,7 @@ export class OwnerService {
       accion: "ListarOwners"
     };
     return this.http.post<Owner[]>(this.url, cuerpo);
+    //[] Array de objetos
   }
 
 
@@ -40,6 +41,14 @@ export class OwnerService {
     };
     return this.http.post(this.url, cuerpo);
   }*/
+
+    getMascota(id:number) {
+      let cuerpo = JSON.stringify({
+        accion: "ObtenerOwnerId_Pets",
+        id:id
+      });
+      return this.http.post<Pet>(this.url, cuerpo);
+    }
 
 
 

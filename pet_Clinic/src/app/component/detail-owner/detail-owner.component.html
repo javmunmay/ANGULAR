@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <h1>Propietario</h1>
 
-    <p>La lista de owner esta en Console!</p>
+    <p>La innfo de Propietario esta en Console!</p>
 
     <div class="table table-bordered">
         <table border="1">
@@ -37,11 +37,63 @@
                 <tr class="table-primary">
                     <th>Telefono</th>
                     <td>{{ owner.telephone}}</td>
-                </tr>
-
-
-            
+                </tr>          
             
         </table>
+        <hr>
+        <a [routerLink]="['/']">Volver</a>
+        <span> | </span>
+        <a [routerLink]="['/']">Añadir</a>
+        <span> | </span>
+        <a [routerLink]="['/']">Eliminar</a>
+        <span> | </span>
+        <a [routerLink]="['/']">Editar</a>
+    <hr>
+        <br>
+
+        <h1>Mascota</h1>
+
+        <p>La info de mascota esta en Console!</p>
+
+
+        <table border="1">
+            
+            <tr class="table-primary">
+                <th>ID</th>
+                <td>{{ pet.id }}</td>
+            </tr>
+
+            <tr class="table-primary">
+                <th>Nombre</th>
+                <td>{{ pet.name }}</td>
+            </tr>
+
+            <tr class="table-primary">
+                <th>Tipo</th>
+                <td>{{ pet.typeName }}</td>
+            </tr>
+
+            <tr class="table-primary">
+                <th>Cumpleaños</th>
+                <td>{{ pet.birthDate }}</td>
+            </tr>
+
+            <tr class="table-primary">
+                <th>Visitas</th>
+                <td>{{ pet.visits}}</td>
+            </tr>   
+        
+    </table>
+
+    <hr>
+        <a [routerLink]="['/']">Volver</a>
+        <span> | </span>
+        <a [routerLink]="['/']">Añadir</a>
+        <span> | </span>
+        <a [routerLink]="['/']">Eliminar</a>
+        <span> | </span>
+        <a [routerLink]="['/']">Editar</a>
+    <hr>
+
     </div>
 </div>

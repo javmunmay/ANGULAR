@@ -3,6 +3,7 @@ import { Owner } from '../../models/owner';
 import { OwnerService } from '../../service/owner.service';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Pet } from '../../models/pet';
 
 
 @Component({
@@ -16,6 +17,9 @@ export class DetailOwnerComponent {
   public listaOwner: Owner[] = [];
   //public persona: Persona;
   public owner: Owner = <Owner>{};
+
+  public listapets: Pet[] = [];
+  public pet: Pet = <Pet>{};
 
   id: number = 0;
 
@@ -34,6 +38,16 @@ export class DetailOwnerComponent {
         console.log("Propietario con id ", res);
         this.owner = res; 
         console.log(this.owner);
+      },
+      error: error => console.log("Error al obtener propietarios: ", error)
+    });
+
+
+    this.servicioPAjax.getMascota(this.id).subscribe({
+      next: res => {
+        console.log("Mascota con id ", res);
+        this.pet = res; 
+        console.log(this.pet);
       },
       error: error => console.log("Error al obtener propietarios: ", error)
     });
