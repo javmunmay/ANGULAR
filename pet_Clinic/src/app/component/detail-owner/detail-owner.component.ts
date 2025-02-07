@@ -54,9 +54,6 @@ export class DetailOwnerComponent {
 
    }
 
-  
-
-
 
   ngOnInit() {
     
