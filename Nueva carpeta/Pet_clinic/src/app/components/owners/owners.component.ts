@@ -28,7 +28,7 @@ export class OwnersComponent {
   }
 
   /*borrarOwner(owner: Owner) {
-    console.log("idOwner :>> ", owner.id);
+    console.log("idOwner ", owner.id);
 
     if(confirm("¿Estás seguro de que deseas eliminar a "+owner.firstName+" "+owner.lastName+"?")) {
       this.servicioOwner.borrarOwner(owner.id).subscribe(

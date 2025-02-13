@@ -34,7 +34,7 @@ export class PetAddComponent implements OnInit {
     this.servicioPet.listarPetTypes().subscribe(
       datos => {
         this.petTypes = datos;
-        console.log("petTypes :>> ", this.petTypes);
+        console.log("petTypes ", this.petTypes);
         
       }
     );
@@ -42,16 +42,16 @@ export class PetAddComponent implements OnInit {
 
   ngOnInit() {
     this.idOwnerTraido = Number(this.activatedRoute.snapshot.params['idOwner']);
-    console.log('idOwnerTraido :>> ', this.idOwnerTraido);
+    console.log('idOwnerTraido ', this.idOwnerTraido);
 
     this.servicioOwner.obtenerOwnerId(this.idOwnerTraido).subscribe(
       (datos) => {
         this.ownerTraido = datos;
-        console.log('owner :>> ', this.ownerTraido);
+        console.log('owner ', this.ownerTraido);
 
         this.pet.owner = this.ownerTraido;
         
-        console.log('pet :>> ', this.pet);
+        console.log('pet ', this.pet);
       },
       (error) => {
         console.error('Error al obtener el propietario:', error);
@@ -60,7 +60,7 @@ export class PetAddComponent implements OnInit {
   }
 
   onSubmit(petTraido: Pet) {
-    console.log("petTraido :>> ", petTraido);
+    console.log("petTraido ", petTraido);
     
     this.servicioPet.anadePet(petTraido).subscribe();
 

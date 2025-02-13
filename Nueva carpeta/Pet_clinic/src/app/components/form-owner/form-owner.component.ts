@@ -51,15 +51,15 @@ export class FormOwnerComponent {
   }
 
   onSubmit(owner: Owner) {
-    console.log("owner :>> ", owner);
-    console.log("ownerId :>> ", owner["id"]);
+    console.log("owner  ", owner);
+    console.log("ownerId  ", owner["id"]);
     
 
     if (owner["id"] == -1) {
       this.servicioOwner.aniadirOwner(owner).subscribe({
         next: datos => {
           this.listaOwners = datos;
-          console.log("listaOwners :>> ", this.listaOwners);
+          console.log("listaOwners  ", this.listaOwners);
           
           this.ruta.navigate(["/"]);
         },
@@ -73,7 +73,7 @@ export class FormOwnerComponent {
       this.servicioOwner.modificarOwner(owner).subscribe(
         datos => {
           this.listaOwners = datos;
-          console.log("listaOwners :>> ", this.listaOwners);
+          console.log("listaOwners ", this.listaOwners);
           
           this.ruta.navigate(["/detail-owner", owner.id]);
         }

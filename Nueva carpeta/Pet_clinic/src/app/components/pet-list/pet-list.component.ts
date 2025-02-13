@@ -21,7 +21,7 @@ export class PetListComponent {
         console.log("Pet eliminado correctamente:", idPet);
         this.petDeleted.emit(idPet);
       },
-      error => console.log("Error al borrar el pet :>> ", error));
+      error => console.log("Error al borrar el pet ", error));
     }
   }
   
